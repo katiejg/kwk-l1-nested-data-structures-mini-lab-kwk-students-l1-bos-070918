@@ -6,9 +6,20 @@ ingredients = [
     ["mayo", "mustard", "tabasco"]
 ]
 
+puts ingredients[0][0..2]
+
 def sandwich_request(ingredients, order) 
   # your code here!
+  order.each do |req|
+    found = ingredients.find do |here|
+      here.find {|have| req == have}
+    end
+    return false if !found
+  end
+  true
 end
+
+sandwich_request(ingredients, ["rye", "tofu", "cheddar"])
 
 # example city_info hash
 cities = {
